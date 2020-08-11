@@ -8,10 +8,28 @@ function App() {
 
   return (  
 
-    <div className="App">  
+    <div className="App">
+        <Router>
+        <div className ="col-sm-4">
+
+              <Link to={'/Barchart'} className="nav-link btn btn-info">Bar Chart</Link>
+
+            </div>
+            <div className="container">
+
+                <Switch>
+                    <Route path='/Barchart' component={Barchart} />
+                </Switch>
+
+            </div>
+            </Router>
+        </div>
+    )}
+
+    /*
 
       <Router>
-            <div className ="col-sm-2">
+            <div className ="col-sm-4">
 
               <Link to={'/Barchart'} className="nav-link btn btn-info">Bar Chart</Link>  
 
@@ -59,6 +77,7 @@ function App() {
 
   );  
 
-}  
+}
+*/
 
 export default App;  
