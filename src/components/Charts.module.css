@@ -1,19 +1,27 @@
 .barcontainer {
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 100%;
+    height: 70%;
+   
 }
 
 .piecontainer {
+    margin: 30px 0;
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 70%;
+    height:100%;
+    flex-direction: "row";
     
 }
 
 .linecontainer {
+    margin: 30px 0;
     display: flex;
     justify-content: center;
-    width: 50%;
-
+    width: 70%;
+    height:100%;
+    flex-direction: "row";
+    
 }

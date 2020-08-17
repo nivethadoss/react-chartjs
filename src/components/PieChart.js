@@ -30,8 +30,8 @@ function PieChart(props) {
                     }]
                 }}
                 options = {{
-                    responsive: true,
-                   
+                    
+                    maintainAspectRatio: false,
                     legend : {display: false},
                     title: {display: true, text: "Number of True and False for each schema"}
                 }}

@@ -9,6 +9,8 @@ function LineChart(props){
 
     const lineChart = (
 
+        props.lineData.data.date ? (
+
         
         <Line
 
@@ -19,18 +21,25 @@ function LineChart(props){
                     label: "Number of messgaes in each date",
                     backgroundColor: ['rgba(255,0,0,0.5)'],
                     fill: false,
+                    borderColor: "#108bc9",
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                    borderWidth: 2,
                     data: props.lineData.data.count
                 }]
             }}
 
             options = {{
-                responsive: true,
+              
+                maintainAspectRatio: false,
                 legend: {
                     display: false
                 },
-                title: {display: true, text: "Number of messages for each "}
+                title: {display: true, text: "Number of messages for each "},
+                
+
             }}
-            />
+            />):null
     )
 
     return (

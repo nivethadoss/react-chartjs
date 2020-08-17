@@ -42,7 +42,12 @@ function BarChart(props) {
                 }}
 
                 options={{
-                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales:{
+                        xAxes: [{
+                            display: false //this will remove all the x-axis grid lines
+                        }]
+                    },
                     legend: {display: false},
                     title: {display:true, text:"Schema Statistics"},
                     onClick: (evt, element) => {
