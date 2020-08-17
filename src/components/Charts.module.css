@@ -1,5 +1,19 @@
-.container {
+.barcontainer {
     display: flex;
     justify-content: center;
     width: 50%;
+}
+
+.piecontainer {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    
+}
+
+.linecontainer {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+
 }

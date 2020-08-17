@@ -36,14 +36,14 @@ export const fetchData = () => {
     }
 }
 */
-export const fetchDataNew = async (dispatch) => {
+export const fetchDataBar = async (dispatch) => {
     dispatch(fetchBarStart())
     try {
         let response = await axios.get("http://127.0.0.1:5000/hashid")
         let  datas = response.data
         let hash_id  = []
         let counts = []
-        console.log(datas)
+       
         datas.forEach(data => {
             hash_id.push(data[0])
             counts.push(data[1])

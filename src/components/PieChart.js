@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Pie} from "react-chartjs-2"
-import { fetchDataNew } from '../redux/PieChart/pieActions'
+import { fetchDataPie } from '../redux/PieChart/pieActions'
 import { connect } from 'react-redux'
+import styles from './Charts.module.css'
 
 
 function PieChart(props) {
+    
 
+    //useEffect(() => {
+    //    props.fetchData()
+    //    return () => {
+            
+    //    }
+    //}, [])
 
     const pieChart = (
 
@@ -14,24 +22,33 @@ function PieChart(props) {
             <Pie
 
                 data = {{
-                    labels :  props.pieData.data.schema_id,
+                    labels :  ["False", "True"],
                     datasets: [{
                         label: "Number of false and true for each document in this particular schema_id",
                         backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)',],
-                        data: props.
+                        data: [props.pieData.data.Number_of_false, props.pieData.data.Number_of_true]
                     }]
                 }}
-        )
+                options = {{
+                    responsive: true,
+                   
+                    legend : {display: false},
+                    title: {display: true, text: "Number of True and False for each schema"}
+                }}
+                />
+
+        ): null
     )
 
     return (
-        <div className = {styles.container}>
+        <div className = {styles.piecontainer}>
             {pieChart}
         </div>
     )
 
 
 }
+
 
 const mapStateToProps  = state => {
 
@@ -40,12 +57,12 @@ const mapStateToProps  = state => {
     }
 }
 
-const mapDispatchToProps = dispatch > {
+const mapDispatchToProps = dispatch => {
 
     return {
 
-        fetchData: () => fetchDataNew(dispatch)
+        fetchData: () => fetchDataPie(dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps(PieChart))
+export default connect(mapStateToProps, mapDispatchToProps)(PieChart)

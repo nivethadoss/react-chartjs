@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react'
 import {Bar} from 'react-chartjs-2'
 import {connect} from 'react-redux'
-import {fetchDataNew} from '../redux/BarChart/barActions'
+import {fetchDataBar} from '../redux/BarChart/barActions'
+import {fetchDataPie} from '../redux/PieChart/pieActions'
+
 import styles from './Charts.module.css'
+import { fetchDataLine } from '../redux/LineChart/lineActions'
 
 function BarChart(props) {
 
     useEffect(() => {
-        props.fetchData()
+        props.fetchDataBar()
         return () => {
             
         }
@@ -24,27 +27,33 @@ function BarChart(props) {
                     labels : props.barData.data.schema_id,
                     datasets:[{
                         label: 'Number of documents for Each schema_id',
-                        backgroundColor:[
-                            'rgba(0,0,255,0.5)',
-                            'rgba(0,255,0,0.5)',
-                            'rgba(255,0,0,0.5)',
-                            'rgba(0,0,255,0.5)',
-                            'rgba(0,255,0,0.5)',
-                            'rgba(255,0,0,0.5)',
-                            'rgba(0,0,255,0.5)',
-                            'rgba(0,255,0,0.5)',
-                            'rgba(255,0,0,0.5)',
-                            'rgba(0,0,255,0.5)',
-                            'rgba(0,255,0,0.5)',
-                            'rgba(255,0,0,0.5)',
-                        ],
+                        backgroundColor:['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','red',
+                        'rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','rgba(238, 130, 238)','orange',
+                        'brown','violet','gray','black', 'green','blue','red','rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','red',
+                        'rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','rgba(238, 130, 238)','orange',
+                        'brown','violet','gray','black', 'green','blue','red','blue','red','rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','red',
+                        'rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','rgba(238, 130, 238)','orange',
+                        'brown','violet','gray','black', 'green','blue','red','rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','red',
+                        'rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)','rgba(238, 130, 238)','orange','brown','violet','gray','black', 'green','blue','rgba(238, 130, 238)','orange',
+                        'brown','violet','gray' ],
+                       
                         data:props.barData.data.document_counts
                     }],
                 }}
 
                 options={{
+                    responsive: true,
                     legend: {display: false},
-                    title: {display:true, text:"Covid-19"}
+                    title: {display:true, text:"Schema Statistics"},
+                    onClick: (evt, element) => {
+                        if(element.length>0){
+                            let idx = element[0]['_index']
+                            let schema = element[0]['_chart']['config']['data']['labels'][idx]
+                            console.log(schema)
+                            props.fetchDataPie(schema)
+                            props.fetchDataLine(schema)
+                        }
+                    }
                 }}
             
             />
@@ -54,11 +63,13 @@ function BarChart(props) {
     )
 
     return (
-        <div className={styles.container}>
+        <div className={styles.barcontainer}>
             {barChart}
         </div>
     )
 }
+
+
 
 
 const mapStateToProps = state => {
@@ -71,7 +82,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchData : () => fetchDataNew(dispatch)
+        fetchDataBar : () => fetchDataBar(dispatch),
+        fetchDataPie : (schemaid) => fetchDataPie(dispatch,schemaid),
+        fetchDataLine : (schemaid) => fetchDataLine(dispatch,schemaid)
     }
 
 }

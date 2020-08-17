@@ -1,4 +1,4 @@
-import {FETCH_BAR_START, FETCH_BAR_SUCCESS, FETCH_BAR_FAILURE} from './pieTypes'
+import {FETCH_PIE_START, FETCH_PIE_SUCCESS, FETCH_PIE_FAILURE} from './pieTypes'
 
 const initialState = {
     loading: false,
@@ -10,13 +10,13 @@ const initialState = {
 const pieReducer = (state = initialState, action) => {
     switch(action.type){
 
-        case FETCH_BAR_START:
+        case FETCH_PIE_START:
             return {
                 ...state,
                 loading: true
             }
 
-        case FETCH_BAR_SUCCESS:
+        case FETCH_PIE_SUCCESS:
 
             return {
                 ...state,
@@ -24,7 +24,7 @@ const pieReducer = (state = initialState, action) => {
                 loading: false
             }
 
-        case FETCH_BAR_FAILURE:
+        case FETCH_PIE_FAILURE:
             return {
                 ...state,
                 data: action.payload,
