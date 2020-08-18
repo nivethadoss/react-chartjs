@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
 import {Bar} from 'react-chartjs-2'
 import {connect} from 'react-redux'
-import {fetchDataBar} from '../redux/BarChart/barActions'
-import {fetchDataPie} from '../redux/PieChart/pieActions'
+import {fetchDataBar} from '../../redux/BarChart/barActions'
+import {fetchDataPie} from '../../redux/PieChart/pieActions'
 
-import styles from './Charts.module.css'
-import { fetchDataLine } from '../redux/LineChart/lineActions'
+import styles from './Bar.module.css'
+import { fetchDataLine } from '../../redux/LineChart/lineActions'
 
 function BarChart(props) {
 

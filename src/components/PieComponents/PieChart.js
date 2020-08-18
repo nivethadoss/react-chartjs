@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {Pie} from "react-chartjs-2"
-import { fetchDataPie } from '../redux/PieChart/pieActions'
+import { fetchDataPie } from '../../redux/PieChart/pieActions'
 import { connect } from 'react-redux'
-import styles from './Charts.module.css'
+import styles from './Pie.module.css'
 
 
 function PieChart(props) {
