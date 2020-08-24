@@ -50,3 +50,4 @@ export const fetchDataLine = async(dispatch,schemaid) => {
 
     }
 }
+
