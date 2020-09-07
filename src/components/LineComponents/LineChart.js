@@ -1,4 +1,4 @@
-import React, {useEffect}from 'react'
+import React, {useEffect} from 'react'
 import {Line} from 'react-chartjs-2'
 import {fetchDataLine} from '../../redux/LineChart/lineActions'
 import { connect } from 'react-redux'
@@ -7,9 +7,15 @@ import styles from './Line.module.css'
 
 function LineChart(props){
 
-    const lineChart = (
+    useEffect(() => {
+        props.fetchData()
+        return () => {
+            
+        }
+    }, [])
 
-        props.lineData.data.date ? (
+
+    const lineChart = (
 
         
         <Line
@@ -18,28 +24,28 @@ function LineChart(props){
             data = {{
                 labels: props.lineData.data.date,
                 datasets: [{
-                    label: "Number of messgaes in each date",
+                    label: "ratio of ptus that evolved in date",
                     backgroundColor: ['rgba(255,0,0,0.5)'],
                     fill: false,
                     borderColor: "#108bc9",
                     pointRadius: 3,
                     pointHoverRadius: 6,
                     borderWidth: 2,
-                    data: props.lineData.data.count
+                    data: props.lineData.data.ratio
                 }]
             }}
 
             options = {{
               
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
                 legend: {
                     display: false
                 },
-                title: {display: true, text: "Number of messages for each "},
+                title: {display: true, text: "ratio of ptu in each date "},
                 
 
             }}
-            />):null
+            />
     )
 
     return (

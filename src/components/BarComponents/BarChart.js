@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import {Bar} from 'react-chartjs-2'
 import {connect} from 'react-redux'
 import {fetchDataBar} from '../../redux/BarChart/barActions'
-import {fetchDataPie} from '../../redux/PieChart/pieActions'
 
 import styles from './Bar.module.css'
 import { fetchDataLine } from '../../redux/LineChart/lineActions'
@@ -50,16 +49,17 @@ function BarChart(props) {
                     },
                     legend: {display: false},
                     title: {display:true, text:"Schema Statistics"},
-                    onClick: (evt, element) => {
-                        if(element.length>0){
-                            let idx = element[0]['_index']
-                            let schema = element[0]['_chart']['config']['data']['labels'][idx]
-                            console.log(schema)
-                            props.fetchDataPie(schema)
-                            props.fetchDataLine(schema)
+                    
+                    //onClick: (evt, element) => {
+                        //if(element.length>0){
+                            //let idx = element[0]['_index']
+                            //let schema = element[0]['_chart']['config']['data']['labels'][idx]
+                            //console.log(schema)
+                            //props.fetchDataPie(schema)
+                            //props.fetchDataLine(schema)
                         }
                     }
-                }}
+                
             
             />
         ): null
@@ -88,8 +88,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchDataBar : () => fetchDataBar(dispatch),
-        fetchDataPie : (schemaid) => fetchDataPie(dispatch,schemaid),
-        fetchDataLine : (schemaid) => fetchDataLine(dispatch,schemaid)
+        //fetchDataPie : (schemaid) => fetchDataPie(dispatch,schemaid),
+        //fetchDataLine : (schemaid) => fetchDataLine(dispatch,schemaid)
     }
 
 }
