@@ -56,3 +56,38 @@ export const fetchDataLine = async(dispatch) => {
     }
 }
 
+
+
+// for linechart2 components
+export const fetchDataLine2 = async(dispatch) => {
+    dispatch(fetchLineStart())
+    try{
+        //let response = await axios.get (`http://127.0.0.1:5000/msg?id=${schemaid}`)
+        let response = await axios.get('http://127.0.0.1:5000/ptu_limit?limit=10')
+        let datas = response.data
+        let date = []
+        let ratio = []
+        console.log(datas)
+        datas.forEach(data => {
+
+            ratio.push(data[1])
+            date.push(data[2])
+            
+        });
+        let modified_data2 = {
+            
+            ratio: ratio,
+            date: date
+        }
+        console.log(ratio, date)
+        
+        dispatch(fetchLineSuccess(modified_data2))
+    
+    
+    }catch(error) {
+                                                                                                                                      
+        console.log(error)
+    }
+}
+
+
