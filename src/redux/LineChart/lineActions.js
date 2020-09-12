@@ -33,7 +33,6 @@ export const fetchDataLine = async(dispatch) => {
         let datas = response.data
         let date = []
         let ratio = []
-        console.log(datas)
         datas.forEach(data => {
 
             ratio.push(data[1])
@@ -45,7 +44,6 @@ export const fetchDataLine = async(dispatch) => {
             ratio: ratio,
             date: date
         }
-        console.log(ratio, date)
         
         dispatch(fetchLineSuccess(modified_data))
     

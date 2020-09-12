@@ -5,16 +5,13 @@ import LineChart2 from "./components/LineComponents/LineChart2";
 import { Provider } from 'react-redux';
 import store from './redux/store'
 import styles from './App.module.css'
-import DropDown1 from './components/DropComponents/Drop1'
-import DropDown2 from './components/DropComponents/Drop2'
-import DropDown3 from './components/DropComponents/Drop3'
-import DropDown6 from './components/DropComponents/Drop6'
-import Example1 from './components/DropComponents/Drop4'
-import Example2 from './components/DropComponents/Drop5'
+
 //import Navbar from './components/NavbarComponents/Nav'
 import NavbarLight from './components/NavbarComponents/Nav'
 import PtuDrop from './components/PtuComponents/PtuDrop';
+import ManuDrop from './components/ManuComponents/ManuDrops';
 import StartDate from './components/StateDateComponent/StartDate';
+import RunDrop from './components/TotalRunsComponents/TotalRunsDrop'
 function App() { 
 
   
@@ -25,15 +22,13 @@ function App() {
       
      
       <NavbarLight/>
+      <div className = {styles.lpchart}>
       <PtuDrop/>
-      <DropDown2/>
-      <DropDown3/>
-      <DropDown6/>
+      <ManuDrop/>
       <StartDate/>
-      <Example2/>
-      
+      </div>
 
-       <div className = {styles.lpchart}>
+        <div className = {styles.lpchart}>
          <LineChart/>
          <LineChart2/>
         </div>
