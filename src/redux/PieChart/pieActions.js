@@ -28,7 +28,6 @@ export const fetchDataPie = async(dispatch, schemaid) => {
 
         let response = await axios.get (`http://127.0.0.1:5000/test?id=${schemaid}`)
         let datas = response.data
-        console.log(datas)
         let modified_data = {
             schema_id: datas[0],
             Number_of_false: datas[1],

@@ -37,8 +37,6 @@ export const fetchDataRuns = async(dispatch) => {
 
             run.push(data[0])            
         })
-        console.log("nnnnnnnnnnnnnnnnnnnnnn")
-        console.log(run)
         let modified_data = {
             
             run:run,

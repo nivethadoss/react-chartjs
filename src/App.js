@@ -12,6 +12,11 @@ import PtuDrop from './components/PtuComponents/PtuDrop';
 import ManuDrop from './components/ManuComponents/ManuDrops';
 import StartDate from './components/StateDateComponent/StartDate';
 import RunDrop from './components/TotalRunsComponents/TotalRunsDrop'
+import BaseDrop from './components/BaseStationComponent/BaseStation'
+import EndDate from './components/EndDateComponent/EndDate';
+import GanttChart from './components/GanttChartComponents/Gantt'
+import OkButton from './components/ButtonComponents/PlotButton';
+
 function App() { 
 
   
@@ -25,13 +30,18 @@ function App() {
       <div className = {styles.lpchart}>
       <PtuDrop/>
       <ManuDrop/>
+      <RunDrop/>
+      <BaseDrop/>
       <StartDate/>
+      <EndDate/>
+      <OkButton/>
       </div>
 
         <div className = {styles.lpchart}>
          <LineChart/>
          <LineChart2/>
         </div>
+        <GanttChart/>
          
     </Provider>
     )}

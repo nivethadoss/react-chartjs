@@ -7,6 +7,11 @@ import manuReducer from './ManuDrop/manuReducer'
 import { combineReducers } from 'redux'
 import startDateReducer from './StartDate/startDateReducer'
 import runsReducer from './TotalRunsDrop/totalRunsReducer'
+import baseReducer from './BaseDrop/baseReducer';
+import  endDateReducer from './EndDate/endDateReducer'
+import ganttReducer from './GanttChart/ganttReducer'
+import buttonReducer from './PlotButton/buttonReducer'
+
 
 
 const rootReducer = combineReducers({
@@ -17,7 +22,11 @@ const rootReducer = combineReducers({
         ptu: ptuReducer,
         sDate: startDateReducer,
         manu: manuReducer,
-        runs:runsReducer
+        run:runsReducer,
+        base: baseReducer,
+        eDate: endDateReducer,
+        gantt: ganttReducer,
+        button: buttonReducer
 })
 
 
