@@ -1,34 +1,30 @@
 import React, {useState} from 'react';
-import { Button } from 'styled-button-component';
 import { Navbar, NavbarLink } from 'styled-navbar-component';
 import { Nav } from 'styled-nav-component';
+import { SocialIcon } from 'react-social-icons';
+import  styled  from  'styled-components';
  
 const NavbarLight = () => {
   const [hidden, setHidden] = useState(true);
  
   return (
+    
     <Navbar expandXl dark>
       <Nav start>
-        <NavbarLink dark brand href="#">Base Station Monitoring Tool</NavbarLink>
+        <NavbarLink dark brand href="#">Production Monitoring Tool</NavbarLink>
         <Nav end>
-          <Button
-            dark
-            outline
-            toggleCollapse
-            expandMd
-            onClick={() => setHidden(!hidden)}
-          >
-            <span>&#9776;</span>
-          </Button>
+          
         </Nav>
       </Nav>
       <Nav start collapse expandMd hidden={hidden}>
       {/*<NavbarLink dark active>Active</NavbarLink>*/}
-        <NavbarLink dark href="#">Link</NavbarLink>
-        <NavbarLink dark href="#">Link</NavbarLink>
-        <NavbarLink dark disabled href="#">Disabled</NavbarLink>
+        <NavbarLink dark ><SocialIcon url="http://linkedin.com/in/nivetha-doss-998483129/" style = {{height: 25, width: 25}}/></NavbarLink>
+        <div class="topnav-right">
+        <NavbarLink dark>Nivetha Doss </NavbarLink>
+        </div>
       </Nav>
     </Navbar>
+    
   );
 };
 
