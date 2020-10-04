@@ -1,4 +1,5 @@
-import {FETCH_TOTALRUNS_START, FETCH_TOTALRUNS_SUCCESS, FETCH_TOTALRUNS_FAILURE} from './totalRunsTypes'
+import {FETCH_TOTALRUNS_START, FETCH_TOTALRUNS_SUCCESS, 
+    FETCH_TOTALRUNS_FAILURE, SET_SELECTED_RUNS} from './totalRunsTypes'
 import axios from 'axios'
 
 export const fetchRunsStart = () => {
@@ -21,6 +22,13 @@ export const fetchRunsFailure = (error) => {
 
         type: FETCH_TOTALRUNS_FAILURE,
         payload: error
+    }
+}
+
+export const setSelectedRuns = (val) => {
+    return {
+        type: SET_SELECTED_RUNS,
+        payload: val
     }
 }
 

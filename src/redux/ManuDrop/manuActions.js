@@ -1,4 +1,6 @@
-import {FETCH_MANUFACTURE_START, FETCH_MANUFACTURE_SUCCESS, FETCH_MANUFACTURE_FAILURE} from './manuTypes'
+import {FETCH_MANUFACTURE_START, FETCH_MANUFACTURE_SUCCESS, 
+    FETCH_MANUFACTURE_FAILURE,
+    SET_SELECTED_MANU} from './manuTypes'
 import axios from 'axios'
 
 export const fetchManuStart = () => {
@@ -24,12 +26,22 @@ export const fetchManuFailure = (error) => {
     }
 }
 
+
+
+export const setSelectedManu = (val) => {
+    return {
+        type: SET_SELECTED_MANU,
+        payload: val
+    }
+}
+
+
 //export const fetchDataLine = async(dispatch,schemaid) => {
 export const fetchDataManu = async(dispatch) => {
     dispatch(fetchManuStart())
     try{
         //let response = await axios.get (`http://127.0.0.1:5000/msg?id=${schemaid}`)
-        let response = await axios.get('http://127.0.0.1:5000/manufacturer')
+        let response = await axios.get('http://127.0.0.1:5000/order_id')
         let datas = response.data
         let manu = []
 

@@ -8,7 +8,7 @@ import styles from './Line.module.css'
 function LineChart(props){
 
     useEffect(() => {
-        props.fetchData()
+        props.fetchData('all')
         return () => {
             
         }
@@ -67,7 +67,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
 
     return {
-        fetchData: () => fetchDataLine(dispatch)
+        fetchData: (typestr) => fetchDataLine(dispatch,typestr)
     }
 }
 

@@ -1,4 +1,6 @@
-import {FETCH_PTUID_START, FETCH_PTUID_SUCCESS, FETCH_PTUID_FAILURE} from './ptuIdTypes'
+import {FETCH_PTUID_START, FETCH_PTUID_SUCCESS, 
+        FETCH_PTUID_FAILURE,
+        SET_SELECTED_PTU} from './ptuIdTypes'
 import axios from 'axios'
 
 export const fetchPtuidStart = () => {
@@ -11,16 +13,22 @@ export const fetchPtuidSuccess = (data) => {
     return {
         type: FETCH_PTUID_SUCCESS,
         payload: data
-
     }
 }
 
 export const fetchPtuidFailure = (error) => {
 
     return {
-
         type: FETCH_PTUID_FAILURE,
         payload: error
+    }
+}
+
+
+export const setSelectedPtu = (val) => {
+    return {
+        type: SET_SELECTED_PTU,
+        payload: val
     }
 }
 
@@ -43,9 +51,7 @@ export const fetchDataPtu = async(dispatch) => {
             ptu: ptu,
         }
         
-        dispatch(fetchPtuidSuccess(modified_data))
-    
-    
+        dispatch(fetchPtuidSuccess(modified_data)) 
     }catch(error) {
                                                                                                                                       
         console.log(error)

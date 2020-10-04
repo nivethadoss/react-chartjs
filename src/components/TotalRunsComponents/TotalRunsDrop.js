@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {fetchDataRuns} from '../../redux/TotalRunsDrop/totalRunsActions'
+import {fetchDataRuns,setSelectedRuns} from '../../redux/TotalRunsDrop/totalRunsActions'
 import styles from './Runs.module.css'
 import {connect} from 'react-redux'
 
@@ -12,6 +12,11 @@ function RunDrop(props) {
         }
     }, [])
 
+    const handleChange = (event) => {
+        props.setSelectedRuns(event.target.value);
+        console.log(event.target.value)
+    }
+
     return ( 
         
         props.runData.data.run
@@ -21,7 +26,7 @@ function RunDrop(props) {
         <div>
             <div className = {styles.runcontainer}>
             <select  
-                placeholder="select ptu_serial_id">
+                placeholder="select ptu_serial_id" onChange={handleChange}>
                 {props.runData.data.run.map((d,i) => (<option key={i}>{d} </option> ))}
            </select>
             </div>
@@ -38,6 +43,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchRuns : () => fetchDataRuns(dispatch),
+        setSelectedRuns : (val) => dispatch(setSelectedRuns(val))
     }
 
 }
